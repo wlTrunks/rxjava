@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">New Java8</string>
+    <string name="tmdb_key">75c20af7fe73d6d00317bb1b3295f961</string>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
+</resources>
