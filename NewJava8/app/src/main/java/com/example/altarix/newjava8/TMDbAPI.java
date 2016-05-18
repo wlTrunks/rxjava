@@ -4,6 +4,7 @@ package com.example.altarix.newjava8;
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -12,6 +13,6 @@ import rx.Observable;
 public interface TMDbAPI {
 
     @GET("movie/popular/?")
-    Observable<List<Movie>> getPopularMovie();
+    Observable<MoviesResponse> getPopularMovie(@Query("api_key") String key);
 
 }

@@ -1,153 +1,173 @@
 package com.example.altarix.newjava8;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Altarix on 29.04.2016.
  */
-public class Movie {
+public class Movie implements Serializable {
 
-    /**
-     * poster_path : /k1QUCjNAkfRpWfm1dVJGUmVHzGv.jpg
-     * adult : false
-     * overview : Based upon Marvel Comics’ most unconventional anti-hero, DEADPOOL tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.
-     * release_date : 2016-02-09
-     * genre_ids : [10749,28,12,35]
-     * id : 293660
-     * original_title : Deadpool
-     * original_language : en
-     * title : Deadpool
-     * backdrop_path : /n1y094tVDFATSzkTnFxoGZ1qNsG.jpg
-     * popularity : 31.130114
-     * vote_count : 2889
-     * video : false
-     * vote_average : 7.2
-     */
-
-    private String poster_path;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("adult")
     private boolean adult;
+    @SerializedName("overview")
     private String overview;
-    private String release_date;
-    private int id;
-    private String original_title;
-    private String original_language;
+    @SerializedName("release_date")
+    private String releaseDate;
+    @SerializedName("genre_ids")
+    private List<Integer> genreIds = new ArrayList<Integer>();
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("original_title")
+    private String originalTitle;
+    @SerializedName("original_language")
+    private String originalLanguage;
+    @SerializedName("title")
     private String title;
-    private String backdrop_path;
-    private double popularity;
-    private int vote_count;
-    private boolean video;
-    private double vote_average;
-    private List<Integer> genre_ids;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
+    @SerializedName("popularity")
+    private Double popularity;
+    @SerializedName("vote_count")
+    private Integer voteCount;
+    @SerializedName("video")
+    private Boolean video;
+    @SerializedName("vote_average")
+    private Double voteAverage;
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id,
+                 String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity,
+                 Integer voteCount, Boolean video, Double voteAverage) {
+        this.posterPath = posterPath;
+        this.adult = adult;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.genreIds = genreIds;
+        this.id = id;
+        this.originalTitle = originalTitle;
+        this.originalLanguage = originalLanguage;
+        this.title = title;
+        this.backdropPath = backdropPath;
+        this.popularity = popularity;
+        this.voteCount = voteCount;
+        this.video = video;
+        this.voteAverage = voteAverage;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public boolean isAdult() {
+        return adult;
     }
 
     public void setAdult(boolean adult) {
         this.adult = adult;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setOriginal_title(String original_title) {
-        this.original_title = original_title;
-    }
-
-    public void setOriginal_language(String original_language) {
-        this.original_language = original_language;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setBackdrop_path(String backdrop_path) {
-        this.backdrop_path = backdrop_path;
-    }
-
-    public void setPopularity(double popularity) {
-        this.popularity = popularity;
-    }
-
-    public void setVote_count(int vote_count) {
-        this.vote_count = vote_count;
-    }
-
-    public void setVideo(boolean video) {
-        this.video = video;
-    }
-
-    public void setVote_average(double vote_average) {
-        this.vote_average = vote_average;
-    }
-
-    public void setGenre_ids(List<Integer> genre_ids) {
-        this.genre_ids = genre_ids;
-    }
-
-    public String getPoster_path() {
-        return poster_path;
-    }
-
-    public boolean getAdult() {
-        return adult;
-    }
-
     public String getOverview() {
         return overview;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public int getId() {
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public List<Integer> getGenreIds() {
+        return genreIds;
+    }
+
+    public void setGenreIds(List<Integer> genreIds) {
+        this.genreIds = genreIds;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public String getOriginal_title() {
-        return original_title;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getOriginal_language() {
-        return original_language;
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public double getPopularity() {
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
+    public Double getPopularity() {
         return popularity;
     }
 
-    public int getVote_count() {
-        return vote_count;
+    public void setPopularity(Double popularity) {
+        this.popularity = popularity;
     }
 
-    public boolean getVideo() {
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public Boolean getVideo() {
         return video;
     }
 
-    public double getVote_average() {
-        return vote_average;
+    public void setVideo(Boolean video) {
+        this.video = video;
     }
 
-    public List<Integer> getGenre_ids() {
-        return genre_ids;
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
     }
 }

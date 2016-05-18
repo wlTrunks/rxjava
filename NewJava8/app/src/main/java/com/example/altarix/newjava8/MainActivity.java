@@ -15,6 +15,8 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,24 +39,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                Request original = chain.request();
-                HttpUrl originalHttpUrl = original.url();
-
-                HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("api_key", getString(R.string.tmdb_key))
-                        .build();
-
-                Request newRequest = chain.request().newBuilder().build();
-                return chain.proceed(newRequest);
-            }
-        };
-
 // Add the interceptor to OkHttpClient
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
+
         OkHttpClient client = builder.build();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -65,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         TMDbAPI service = retrofit.create(TMDbAPI.class);
 
-        Observable<List<Movie>> observable = service.getPopularMovie();
+        Observable<MoviesResponse> observable = service.getPopularMovie(getString(R.string.tmdb_key));
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List<Movie>>() {
+                .subscribe(new Subscriber<MoviesResponse>() {
                     @Override
                     public void onCompleted() {
                         Toast.makeText(getApplicationContext(),
@@ -89,10 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(List<Movie> movies) {
-                        for (Movie movie : movies) {
-                            Log.v("TMDB", " movie = " + movie.getTitle());
-                        }
+                    public void onNext(MoviesResponse movies) {
+
+                        Log.v("TMDB", " movie = " + movies.getTotalResults());
                     }
                 });
     }
