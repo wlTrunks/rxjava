@@ -77,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(MoviesResponse movies) {
-
-                        Log.v("TMDB", " movie = " + movies.getTotalResults());
+                        List<Movie> movie = movies.getResults();
+                        for (Movie m : movie) {
+                            Log.v("TMDB", " movie = " + m.getTitle());
+                        }
                     }
                 });
     }
