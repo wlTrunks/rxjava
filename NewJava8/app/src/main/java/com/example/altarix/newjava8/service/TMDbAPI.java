@@ -1,7 +1,7 @@
-package com.example.altarix.newjava8;
+package com.example.altarix.newjava8.service;
 
 
-import java.util.List;
+import com.example.altarix.newjava8.model.MoviesResponse;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

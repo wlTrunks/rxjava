@@ -9,8 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.altarix.newjava8.MainActivity">
 
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/recyclerList"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
 </RelativeLayout>

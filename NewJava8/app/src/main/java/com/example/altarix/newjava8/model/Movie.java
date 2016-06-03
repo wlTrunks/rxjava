@@ -1,4 +1,4 @@
-package com.example.altarix.newjava8;
+package com.example.altarix.newjava8.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,6 +10,8 @@ import java.util.List;
  * Created by Altarix on 29.04.2016.
  */
 public class Movie implements Serializable {
+
+    private static String imagePath =  "http://image.tmdb.org/t/p/w500";
 
     @SerializedName("poster_path")
     private String posterPath;
@@ -57,6 +59,10 @@ public class Movie implements Serializable {
         this.voteCount = voteCount;
         this.video = video;
         this.voteAverage = voteAverage;
+    }
+
+    public String getUrl(){
+        return imagePath + getPosterPath();
     }
 
     public String getPosterPath() {

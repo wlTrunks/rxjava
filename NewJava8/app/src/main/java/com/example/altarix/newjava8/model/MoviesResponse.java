@@ -1,4 +1,4 @@
-package com.example.altarix.newjava8;
+package com.example.altarix.newjava8.model;
 
 import com.google.gson.annotations.SerializedName;
 
